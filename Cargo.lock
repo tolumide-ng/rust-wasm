@@ -152,3 +152,7 @@ dependencies = [
  "wasm-bindgen",
  "web-sys",
 ]
+
+[[package]]
+name = "working_char"
+version = "0.1.0"

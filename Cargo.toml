@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "hello",
-    "without_bundler"
+    "without_bundler",
+    "working_char"
 ]
