@@ -2,5 +2,5 @@
 members = [
     "hello",
     "without_bundler",
-    "working_char"
+    "import_from_js"
 ]
