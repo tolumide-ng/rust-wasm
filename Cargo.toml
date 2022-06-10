@@ -3,5 +3,6 @@ members = [
     "hello",
     "without_bundler",
     "import_from_js",
-    "char"
+    "char",
+    "wasm_in_wasm"
 ]
