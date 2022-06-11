@@ -4,5 +4,6 @@ members = [
     "without_bundler",
     "import_from_js",
     "char",
-    "wasm_in_wasm"
+    "wasm_in_wasm",
+    "hello_world_dom"
 ]
