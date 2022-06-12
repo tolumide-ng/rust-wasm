@@ -30,6 +30,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "hello_world_dom"
+version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "import_from_js"
 version = "0.1.0"
 dependencies = [

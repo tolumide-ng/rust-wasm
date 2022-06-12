@@ -16,7 +16,7 @@ macro_rules! console_log {
 const WASM: &[u8] = include_bytes!("add.wasm");
 
 async fn run_async() -> Result<(), JsValue> {
-    console_log("instantiating a new wasm module directly");
+    console_log!("instantiating a new wasm module directly");
 
     let a = JsFuture::from(WebAssembly::instantiate_buffer(WASM, &Object::new())).await?;
     let b: WebAssembly::Instance = Reflect::get(&a, &"instance".into())?.dyn_into()?;
@@ -28,7 +28,7 @@ async fn run_async() -> Result<(), JsValue> {
         .expect("add export wasn't a function");
 
     let three = add.call2(&JsValue::undefined(), &1.into(), &2.into())?;
-    console_log("1 + 2 = {:?}", three);
+    console_log!("1 + 2 = {:?}", three);
 
     let mem = Reflect::get(c.as_ref(), &"memory".into())?
         .dyn_into::<WebAssembly::Memory>()
@@ -37,7 +37,7 @@ async fn run_async() -> Result<(), JsValue> {
     console_log!("created module has {} pages of memory", mem.grow(0));
     console_log!("giving the module 4 more pages of memory");
     mem.grow(4);
-    console_log("now the moedule has {} pages of memory", mem.grow(0));
+    console_log!("now the moedule has {} pages of memory", mem.grow(0));
 
     Ok(())
 }
