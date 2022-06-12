@@ -22,6 +22,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "closures"
+version = "0.1.0"
+dependencies = [
+ "js-sys",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "hello"
 version = "0.1.0"
 dependencies = [
