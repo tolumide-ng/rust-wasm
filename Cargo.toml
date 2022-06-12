@@ -5,5 +5,6 @@ members = [
     "import_from_js",
     "char",
     "wasm_in_wasm",
-    "hello_world_dom"
+    "hello_world_dom",
+    "closures"
 ]
