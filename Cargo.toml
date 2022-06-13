@@ -8,4 +8,5 @@ members = [
     "hello_world_dom",
     "closures",
     "performance",
+    "fetch",
 ]
