@@ -6,5 +6,6 @@ members = [
     "char",
     "wasm_in_wasm",
     "hello_world_dom",
-    "closures"
+    "closures",
+    "performance",
 ]
