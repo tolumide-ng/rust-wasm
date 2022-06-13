@@ -9,4 +9,5 @@ members = [
     "closures",
     "performance",
     "fetch",
+    "todo_mvc",
 ]
