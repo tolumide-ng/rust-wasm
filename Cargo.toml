@@ -9,4 +9,5 @@ members = [
     "closures",
     "performance",
     "fetch",
+    "canvas_2d",
 ]
