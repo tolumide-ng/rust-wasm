@@ -24,7 +24,7 @@ impl Template {
     /// Returns the contents for a todo list
     /// 
     pub fn item_list(items: ItemList) -> String {
-        let output = String::new();
+        let mut output = String::new();
         for item in items.iter() {
             let row = RowTemplate {
                 id: &item.id,
