@@ -41,7 +41,7 @@ impl Controller {
         use self::ControllerMessage::*;
 
         match method_name {
-            AddItem((title)) => self.add_item(title),
+            AddItem(title) => self.add_item(title),
             SetPage(hash) => self.set_page(hash),
             EditItemSave(id, value) => self.edit_item_save(id, value),
             EditItemCancel(id) => self.edit_item_cancel(id),

@@ -218,14 +218,12 @@ impl View {
     /// Render an item as either completed or not.
     fn set_item_complete(&self, id: &str, completed: bool) {
         if let Some(mut list_item) = Element::qs(&View::get_selector_string(id)) {
-            if let Some(input) = list_item.qs_from("input.edit") {
-                list_item.class_list_remove("editing");
+            let class_name = if completed { "completed" } else { "" };
+            list_item.set_class_name(class_name);
 
-                if let Some(mut list_item_label) = list_item.qs_from("label") {
-                    list_item_label.set_text_content("title");
-                }
-
-                list_item.remove_child(input);
+            // In case it was toggled from an event and not by the checkbox
+            if let Some(mut el) = list_item.qs_from("input") {
+                el.set_checked(completed);
             }
         }
     }
