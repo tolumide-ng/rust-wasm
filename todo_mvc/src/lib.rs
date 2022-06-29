@@ -14,6 +14,10 @@ pub mod template;
 pub mod scheduler;
 
 use crate::scheduler::Scheduler;
+use view::{View, ViewMessage};
+use controller::{ControllerMessage};
+use store::Store;
+use controller::Controller;
 
 /// Message wrapper enum used to pass through the scheduler to the Controller or View
 pub enum Message {
@@ -31,6 +35,12 @@ pub fn exit(message: &str) {
 }
 
 fn app(name: &str) {
+    let sched = Rc::new(Scheduler::new());
+    let store = match Store::new(name) {
+        Some(s) => s,
+        None => return,
+    };
+    let controller = Controller::new(store, Rc::downgrade(&sched));
     if let Some(mut view) = View::new(Rc::clone(&sched)) {
         let sch: &Rc<Scheduler> = &sched;
         view.init();

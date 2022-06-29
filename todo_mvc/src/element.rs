@@ -131,6 +131,14 @@ impl Element {
         found_el
     }
 
+    /// Sets the inner HTML of the `self.el` element
+    pub fn set_inner_html(&mut self, value: String) {
+        if let Some(el) = self.el.take() {
+            el.set_inner_html(&value);
+            self.el = Some(el);
+        }
+    }
+
     /// Sets the text content of the `self.el` element
     pub fn set_text_content(&mut self, value: &str) {
         if let Some(el) = self.el.as_ref() {

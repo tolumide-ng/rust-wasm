@@ -12,7 +12,7 @@ pub struct Scheduler {
 
 impl Scheduler {
     /// Constructs a new `Scheduler`
-    pub fn new() -> Scheduler {
+    pub fn new() -> Self {
         Scheduler { 
             controller: Rc::new(RefCell::new(None)), 
             view: Rc::new(RefCell::new(None)), 

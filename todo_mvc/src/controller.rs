@@ -1,9 +1,9 @@
 use std::{cell::RefCell, rc::Weak};
 use js_sys::Date;
 
-use crate::{Scheduler, Message};
-
-use crate::store::{Store, ItemListTrait, ItemQuery};
+use crate::{Scheduler, Message, exit};
+use crate::view::ViewMessage;
+use crate::store::{Item, Store, ItemListTrait, ItemQuery, ItemUpdate};
 
 /// The controller of the application turns page state into functionality
 pub struct Controller {
@@ -60,8 +60,10 @@ impl Controller {
 
         fn add_message(&self, view_message: ViewMessage) {
             if let Ok(sched) = self.sched.try_borrow_mut() {
-                if let Some(ref sched) = sched.upgrade() {
-                    sched.add_message(Message::View(view_message));
+                if let Some(ref sched) = *sched {
+                    if let Some(ref sched) = sched.upgrade() {
+                        sched.add_message(Message::View(view_message));
+                    }
                 }
             }
         }
@@ -133,7 +135,7 @@ impl Controller {
                 completed,
             });
             let tid = id.to_string();
-            self.add_message(ViewMessage::SetItemCompleted(tid, completed));
+            self.add_message(ViewMessage::SetItemComplete(tid, completed));
         }
 
         /// Set all items to completed or active
@@ -176,7 +178,7 @@ impl Controller {
             if let Some((total, active, completed)) = self.store.count() {
                 self.add_message(ViewMessage::SetItemsLeft(active));
                 self.add_message(ViewMessage::SetClearCompletedButtonVisibility(completed > 0));
-                self.add_message(ViewMessage::SetCOmpleteAllCheckbox(total > 0));
+                self.add_message(ViewMessage::SetCompleteAllCheckbox(total > 0));
             }
 
             self.last_active_route = route.to_string();
